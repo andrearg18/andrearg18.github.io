@@ -1,1 +1,30 @@
-/* You can add global styles to this file, and also import other style files */
+// Global own class
+div:has(.--arg-container-page)
+    background: #e7e7e7
+    padding: 1.5vh
+    height: 100vh
+    
+.--arg-container-page
+    // filter: blur(2px)  
+    background-image: url('./app/shared/images/fondo.jpg')
+    background-size: cover
+    background-position: left
+    background-repeat: no-repeat
+    border-radius: 2vh
+    height: 100%
+    display: flex
+    flex-direction: column
+    .--arg-title
+        color: white
+        height: 30%
+        align-items: center
+        padding-left: 10%
+    .--arg-content
+        padding: 4vh
+        height: 70%
+        justify-content: end
+    .--arg-title, .--arg-content
+        display: flex
+
+.--arg-height100
+    height: 100vh !important
