@@ -12,19 +12,17 @@ div:has(.--arg-container-page)
     background-repeat: no-repeat
     border-radius: 2vh
     height: 100%
-    display: flex
-    flex-direction: column
     .--arg-title
-        color: white
-        height: 30%
-        align-items: center
-        padding-left: 10%
-    .--arg-content
-        padding: 4vh
-        height: 70%
-        justify-content: end
-    .--arg-title, .--arg-content
+        justify-content: flex-end
+        span
+            // font-size: clamp(50px, 50px, 1vw)
+            font-size: 10vw
+            font-weight: bold
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
+
+    &, .--arg-title
         display: flex
+        flex-direction: column
 
 .--arg-height100
     height: 100vh !important

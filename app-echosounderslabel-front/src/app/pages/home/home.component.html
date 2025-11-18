@@ -1,9 +1,64 @@
 <div id="containerHome">
   <div class="--arg-container-page">
-    <div class="--arg-title">Título</div>
+    <div class="--arg-title">
+      <span>ECHO</span>
+      <span>SOUNDERS</span>
+    </div>
 
-    <div class="--arg-content">
-      <form></form>
+    <div class="arg-content">
+      <form [formGroup]="emailForm">
+        <!-- Asunto -->
+        <mat-form-field>
+          <mat-label>Asunto</mat-label>
+          <mat-icon>subject</mat-icon>
+          <input formControlName="subject" autocomplete="off" />
+        </mat-form-field>
+
+        <mat-form-field
+          class="full-width"
+          appearance="outline"
+          [subscriptSizing]="'dynamic'"
+        >
+          <mat-label translate="LODGING.TYPE"></mat-label>
+          <!-- <mat-select formControlName="subject">
+            <mat-option value="" class="custom-none-option">
+              {{ "COMMON.NONE" | translate }}
+            </mat-option>
+            <mat-option
+              matInput
+              *ngFor="let typeSelect of typeListSelect"
+              [value]="typeSelect.name"
+            >
+              {{ typeSelect.name }}
+            </mat-option>
+          </mat-select> -->
+        </mat-form-field>
+
+        <!-- Email -->
+        <mat-form-field>
+          <mat-label>Email</mat-label>
+          <mat-icon>email</mat-icon>
+          <input formControlName="email" type="email" />
+        </mat-form-field>
+
+        <!-- SoundCloud Link -->
+        <mat-form-field>
+          <mat-label>SoundCloud Link</mat-label>
+          <mat-icon>link</mat-icon>
+          <input formControlName="link" autocomplete="off" />
+        </mat-form-field>
+
+        <!-- About -->
+        <mat-form-field>
+          <mat-label>Message</mat-label>
+          <mat-icon>about</mat-icon>
+          <input
+            formControlName="about"
+            autocomplete="off"
+            placeholder="Tell us something about you and your name"
+          />
+        </mat-form-field>
+      </form>
     </div>
   </div>
 </div>
