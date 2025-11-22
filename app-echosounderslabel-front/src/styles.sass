@@ -1,28 +1,119 @@
-// Global own class
+// Principal styles
 div:has(.--arg-container-page)
-    background: #e7e7e7
-    padding: 1.5vh
-    height: 100vh
-    
-.--arg-container-page
-    // filter: blur(2px)  
-    background-image: url('./app/shared/images/fondo.jpg')
-    background-size: cover
-    background-position: left
-    background-repeat: no-repeat
-    border-radius: 2vh
-    height: 100%
-    .--arg-title
-        justify-content: flex-end
-        span
-            // font-size: clamp(50px, 50px, 1vw)
-            font-size: 10vw
-            font-weight: bold
-            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
+  // background: #e7e7e7
+  // padding: 1.5vh
+  height: 100vh
+  display: flex
+  flex-direction: column
+  // Top / Bottom borders
+  .--arg-row-top, .--arg-row-bottom
+    height: 5%
+    background-color: black
 
-    &, .--arg-title
+  // <Principal content>
+  .--arg-container-page
+    height: 100%
+    background-image: url('./app/shared/images/fondo.png')
+    background-position: center
+    display: flex
+    flex-direction: column
+      // background-size: cover
+      
+    // Header
+    .--arg-header
+      height: 20%
+      display: flex
+      .--arg-title
+        width: 85%
+        color: white
         display: flex
         flex-direction: column
+        justify-content: center
+        padding: 20px
+        line-height: .8
+        font-size: 50px
+        // Cambiar
+        font-weight: bold
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
+      .--arg-collapse-menu
+        width: 15%
 
+    // Content
+    .--arg-content
+      height: 80%
+      padding: 20px
+      //     span
+      //         font-size: 100px
+      //         font-weight: bold
+      //         font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
+
+      // &, .--arg-header
+      //     display: flex
+      //     flex-direction: column
+
+  @media (min-width: 800px)
+    .--arg-row-top, .--arg-row-bottom
+      height: 20%
+    .--arg-header
+      height: 20%
+      .--arg-title
+        width: 100%
+      .--arg-collapse-menu
+        display: none
+    .--arg-content
+      height: 60%
+
+// Global own class
 .--arg-height100
-    height: 100vh !important
+  height: 100vh !important
+
+.--arg-flex-centered
+  display: flex !important
+  justify-content: center !important
+  align-items: center !important
+
+.--arg-button
+  height: 35px
+  padding: 0
+  min-width: 60px
+  border: none
+  &:hover
+    background-color: #555555
+    transform: scale(1.05)
+.--arg-button-primary
+  width: 100px
+  background: #353535
+  color: white
+
+// Scroll bar
+::-webkit-scrollbar
+  width: 5px
+  max-height: 100px !important
+::-webkit-scrollbar-thumb
+  border-radius: 5px
+  background: #00000065
+  cursor: pointer
+  &:hover
+    background: #00000080
+::-webkit-scrollbar-track
+  margin: 20px 0 20px 0
+
+// All mat-form-fields
+mat-form-field
+  width: 100%
+  .mdc-text-field--filled
+    border-radius: 3px
+    input, .mat-mdc-form-field-infix, .mat-mdc-form-field-flex, .mat-mdc-text-field-wrapper
+      height: 50px !important
+      min-height: 50px !important
+    label
+      bottom: -3px
+    input, .mat-mdc-form-field-infix
+      padding: 0
+    textarea
+      padding-top: 10px !important
+    .mdc-floating-label
+      opacity: 1
+      transition: opacity .2s
+    .mdc-floating-label--float-above
+      opacity: 0 !important

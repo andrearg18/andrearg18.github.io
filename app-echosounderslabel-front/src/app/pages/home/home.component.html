@@ -1,64 +1,86 @@
 <div id="containerHome">
+  <!-- <ROW TOP> -->
+  <div class="--arg-row-top"></div>
+
+  <!-- <CONTENT> -->
   <div class="--arg-container-page">
-    <div class="--arg-title">
-      <span>ECHO</span>
-      <span>SOUNDERS</span>
+    <div class="--arg-header">
+      <div class="--arg-title">
+        <span>ECHO</span>
+        <span>SOUNDERS</span>
+      </div>
+      <!-- Cambiar futuro -->
+      <div class="--arg-collapse-menu"></div>
     </div>
 
-    <div class="arg-content">
+    <div class="--arg-content">
+      <!-- Manus -->
+      <div class="arg-manus-grid">
+        <span>CONTACT</span>
+        <span>ABOUT US</span>
+        <span>BEATPORT</span>
+        <span>YOUTUBE</span>
+        <span>INFO</span>
+      </div>
+
+      <!-- <Form> -->
       <form [formGroup]="emailForm">
-        <!-- Asunto -->
-        <mat-form-field>
-          <mat-label>Asunto</mat-label>
-          <mat-icon>subject</mat-icon>
-          <input formControlName="subject" autocomplete="off" />
-        </mat-form-field>
+        <div class="arg-form-grid">
+          <!-- Asunto -->
+          <div>
+            <mat-form-field [subscriptSizing]="'dynamic'">
+              <mat-icon matPrefix>subject</mat-icon>
+              <mat-select formControlName="subject" matSelect>
+                <mat-option value="" disabled> Asunto </mat-option>
+                <mat-option value="a"> Opción A </mat-option>
+                <mat-option value="b"> Opción B </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
 
-        <mat-form-field
-          class="full-width"
-          appearance="outline"
-          [subscriptSizing]="'dynamic'"
-        >
-          <mat-label translate="LODGING.TYPE"></mat-label>
-          <!-- <mat-select formControlName="subject">
-            <mat-option value="" class="custom-none-option">
-              {{ "COMMON.NONE" | translate }}
-            </mat-option>
-            <mat-option
-              matInput
-              *ngFor="let typeSelect of typeListSelect"
-              [value]="typeSelect.name"
-            >
-              {{ typeSelect.name }}
-            </mat-option>
-          </mat-select> -->
-        </mat-form-field>
+          <!-- Email -->
+          <div>
+            <mat-form-field [subscriptSizing]="'dynamic'">
+              <mat-label>Email</mat-label>
+              <mat-icon matPrefix>email</mat-icon>
+              <input formControlName="email" type="email" matInput />
+            </mat-form-field>
+          </div>
 
-        <!-- Email -->
-        <mat-form-field>
-          <mat-label>Email</mat-label>
-          <mat-icon>email</mat-icon>
-          <input formControlName="email" type="email" />
-        </mat-form-field>
+          <!-- SoundCloud Link -->
+          <div class="arg-full-span">
+            <mat-form-field [subscriptSizing]="'dynamic'">
+              <mat-label>SoundCloud Link</mat-label>
+              <mat-icon matPrefix>link</mat-icon>
+              <input formControlName="link" autocomplete="off" matInput />
+            </mat-form-field>
+          </div>
 
-        <!-- SoundCloud Link -->
-        <mat-form-field>
-          <mat-label>SoundCloud Link</mat-label>
-          <mat-icon>link</mat-icon>
-          <input formControlName="link" autocomplete="off" />
-        </mat-form-field>
+          <!-- About -->
+          <div class="arg-cell-about arg-full-span height100">
+            <mat-form-field [subscriptSizing]="'dynamic'">
+              <mat-label>Tell us</mat-label>
+              <mat-icon matPrefix>message</mat-icon>
+              <textarea
+                formControlName="about"
+                autocomplete="off"
+                placeholder="Tell us something about you and your name"
+                matInput
+              ></textarea>
+            </mat-form-field>
+          </div>
 
-        <!-- About -->
-        <mat-form-field>
-          <mat-label>Message</mat-label>
-          <mat-icon>about</mat-icon>
-          <input
-            formControlName="about"
-            autocomplete="off"
-            placeholder="Tell us something about you and your name"
-          />
-        </mat-form-field>
+          <!-- Send button -->
+          <div class="arg-full-span --arg-flex-centered">
+            <button class="button --arg-button --arg-button-primary">
+              Send
+            </button>
+          </div>
+        </div>
       </form>
     </div>
   </div>
+
+  <!-- <ROW BOTTOM> -->
+  <div class="--arg-row-bottom"></div>
 </div>

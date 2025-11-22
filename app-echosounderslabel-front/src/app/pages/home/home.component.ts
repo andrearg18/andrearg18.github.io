@@ -20,7 +20,7 @@ export class HomeComponent implements OnInit {
 
   private initForm(): void {
     this.emailForm = this.formBuilder.group({
-      subject: ['A', Validators.required],
+      subject: ['', Validators.required],
       email: ['', Validators.required],
       link: ['', Validators.required],
       about: ['', Validators.required],
