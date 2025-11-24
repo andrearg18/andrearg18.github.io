@@ -5,13 +5,12 @@ import { HomeRoutingModule } from './home.routing';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { MatIconModule } from '@angular/material/icon';
 import { MatSelectModule } from '@angular/material/select';
+import { MenuModule } from '../../components/layouts/menu/menu.module';
 
 const MATERIAL = [
   MatFormFieldModule,
   MatInputModule,
-  MatIconModule,
   MatSelectModule
 ]
 
@@ -22,6 +21,7 @@ const MATERIAL = [
     CommonModule,
     ReactiveFormsModule,
     HomeRoutingModule,
+    MenuModule
   ],
 })
 export class HomeModule { }

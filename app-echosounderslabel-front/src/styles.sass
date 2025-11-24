@@ -1,69 +1,145 @@
-// Principal styles
+/** Principal styles **/
 div:has(.--arg-container-page)
-  // background: #e7e7e7
-  // padding: 1.5vh
   height: 100vh
   display: flex
   flex-direction: column
-  // Top / Bottom borders
+  // top / bottom borders
   .--arg-row-top, .--arg-row-bottom
     height: 5%
     background-color: black
 
-  // <Principal content>
-  .--arg-container-page
-    height: 100%
-    background-image: url('./app/shared/images/fondo.png')
-    background-position: center
+.--arg-container-page
+  display: flex
+  flex-direction: column
+  height: 100%
+  background-image: url('./app/shared/images/fondo.png')
+  background-position: center
+  background-size: cover
+      
+// <Header>
+.--arg-header
+  height: 20%
+  display: flex
+  .--arg-title
     display: flex
     flex-direction: column
-      // background-size: cover
+    justify-content: end
+    width: 85%
+    color: white
+    padding: 20px
+    line-height: .8
+    font-size: clamp(70px, 10vw, 10vh)
+    font-weight: bold
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
+    span
+      text-wrap: balance
       
-    // Header
-    .--arg-header
-      height: 20%
+  // menus
+  .--arg-menus 
+    display: none
+    width: 100%
+    > div
+      gap: 60px
+      padding: 0 40px
+      color: white
+    span
+      cursor: pointer
+      &:hover 
+        opacity: 0.6
+      
+  .--arg-collapse-menu
+    width: 15%
+    display: flex
+    align-items: end
+    justify-content: end 
+    cursor: pointer
+    color: white
+    padding: 20px
+    width: 100%
+    mat-icon
+      width: fit-content
+      height: fit-content
+      font-size: 60px
+      
+  .--arg-nav-menu
+    display: none
+    flex-direction: column
+    gap: 20px
+    position: fixed
+    top: 4%
+    right: 0
+    width: 70vw
+    height: 100vh
+    background-color: black
+    transition: right 0.3s ease
+    z-index: 999
+    mat-icon
+      width: fit-content
+      height: fit-content
+      font-size: 50px
+      padding-left: 20px
+    span
+      padding-left: 50px
+    &.open 
       display: flex
-      .--arg-title
-        width: 85%
+      span 
         color: white
-        display: flex
-        flex-direction: column
-        justify-content: center
-        padding: 20px
-        line-height: .8
-        font-size: 50px
-        // Cambiar
-        font-weight: bold
-        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
-      .--arg-collapse-menu
-        width: 15%
+        font-size: 2vh
+        cursor: pointer
+        transition: 0.2s
+      span:hover 
+        opacity: 0.6
 
-    // Content
-    .--arg-content
-      height: 80%
-      padding: 20px
-      //     span
-      //         font-size: 100px
-      //         font-weight: bold
-      //         font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
+// Content
+.--arg-content
+  height: 80%
+  padding: 20px
 
-      // &, .--arg-header
-      //     display: flex
-      //     flex-direction: column
-
-  @media (min-width: 800px)
-    .--arg-row-top, .--arg-row-bottom
-      height: 20%
+@media (min-width: 800px)
+  .--arg-row-top, .--arg-row-bottom
+    height: 15% !important
+  .--arg-container-page
     .--arg-header
-      height: 20%
-      .--arg-title
-        width: 100%
-      .--arg-collapse-menu
-        display: none
+      flex-direction: column
+      height: 30%
+    .--arg-title
+      height: 100%
+    .--arg-menus, .--arg-menus > div
+      display: flex
+    .--arg-collapse-menu
+      display: none
     .--arg-content
-      height: 60%
+      height: 70%
 
-// Global own class
+@media (min-width: 1500px)
+  .--arg-row-top, .--arg-row-bottom
+    height: 20% !important
+  .--arg-container-page
+    flex-direction: row
+    align-items: center
+    .--arg-header
+      width: 50%
+      justify-content: center
+    .--arg-title
+      width: fit-content
+    .--arg-menus 
+      justify-content: center
+      div
+        flex-direction: column
+        align-items: flex-start
+        gap: 0
+    .--arg-content
+      width: 50%
+      height: fit-content
+      
+@media (min-width: 1800px)
+  .--arg-header
+    align-items: center
+  .--arg-menus 
+    margin-left: 70%
+/** /principal style/ **/
+
+/** Global own class **/
 .--arg-height100
   height: 100vh !important
 
@@ -84,8 +160,9 @@ div:has(.--arg-container-page)
   width: 100px
   background: #353535
   color: white
+/** /global own class/ **/
 
-// Scroll bar
+// <Scroll bar>
 ::-webkit-scrollbar
   width: 5px
   max-height: 100px !important
@@ -98,7 +175,7 @@ div:has(.--arg-container-page)
 ::-webkit-scrollbar-track
   margin: 20px 0 20px 0
 
-// All mat-form-fields
+// <All mat-form-fields>
 mat-form-field
   width: 100%
   .mdc-text-field--filled

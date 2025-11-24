@@ -8,7 +8,7 @@ import {
   isPlatformServer,
   parseCookieValue,
   setRootDomAdapter
-} from "./chunk-XQPTOUZP.js";
+} from "./chunk-G3R3A7LM.js";
 import {
   APP_BOOTSTRAP_LISTENER,
   APP_ID,
@@ -95,7 +95,7 @@ import {
   ɵɵdefineInjector,
   ɵɵdefineNgModule,
   ɵɵinject
-} from "./chunk-5T6PAE7P.js";
+} from "./chunk-K5NYMLMM.js";
 
 // node_modules/@angular/platform-browser/fesm2022/dom_renderer-DGKzginR.mjs
 var EVENT_MANAGER_PLUGINS = new InjectionToken(ngDevMode ? "EventManagerPlugins" : "");
@@ -4410,6 +4410,7 @@ function provideClientHydration(...features) {
 var VERSION = new Version("19.2.15");
 
 export {
+  HttpClient,
   EVENT_MANAGER_PLUGINS,
   EventManager,
   EventManagerPlugin,
@@ -4459,4 +4460,4 @@ export {
    * License: MIT
    *)
 */
-//# sourceMappingURL=chunk-4CCQPQHY.js.map
+//# sourceMappingURL=chunk-WZVJZBOY.js.map
