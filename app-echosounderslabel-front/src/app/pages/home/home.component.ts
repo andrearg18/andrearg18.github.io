@@ -15,6 +15,7 @@ export class HomeComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    console.info('v1 Responsive structure')
     this.initForm()
   }
 
