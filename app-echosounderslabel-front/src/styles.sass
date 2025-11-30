@@ -12,13 +12,14 @@ div:has(.--arg-container-page)
   display: flex
   flex-direction: column
   height: 100%
-  background-image: url('./app/shared/images/fondo.png')
+  background-image: url('assets/background.png')
   background-position: center
   background-size: cover
+  overflow: auto
       
 // <Header>
 .--arg-header
-  height: 20%
+  height: 25%
   display: flex
   .--arg-title
     display: flex
@@ -92,8 +93,12 @@ div:has(.--arg-container-page)
 
 // Content
 .--arg-content
-  height: 80%
+  height: 75%
   padding: 20px
+  display: flex
+  align-items: center
+  @media (min-width: 700px) and (max-width: 1100px) and (max-height: 650px)
+      transform: scale(.7)
 
 @media (min-width: 700px)
   .--arg-row-top, .--arg-row-bottom
@@ -133,12 +138,6 @@ div:has(.--arg-container-page)
     .--arg-content
       width: 50%
       height: fit-content
-      
-// @media (min-width: 1800px)
-  // .--arg-header
-  //   align-items: center
-  // .--arg-menus 
-  //   margin-left: 70%
 /** /principal style/ **/
 
 /** Global own class **/
@@ -153,10 +152,13 @@ div:has(.--arg-container-page)
     height: fit-content
 
 .--arg-button
-  height: 35px
-  padding: 0
+  height: 45px
+  padding-bottom: 14px
   min-width: 60px
   border: none
+  font-size: 20px
+  &:hover
+    background-color: #000000b6 !important
 
 .--arg-button-primary
   width: 100px
@@ -195,22 +197,17 @@ div:has(.--arg-container-page)
 // <All mat-form-fields>
 mat-form-field
   width: 100%
-  .mdc-text-field--filled
+  .mdc-text-field
     border-radius: 3px
-    input, .mat-mdc-form-field-infix, .mat-mdc-form-field-flex, .mat-mdc-text-field-wrapper
-      height: 50px !important
-      min-height: 50px !important
-    label
-      bottom: -3px
-    input, .mat-mdc-form-field-infix
-      padding: 0
-    textarea
-      padding-top: 10px !important
-    .mdc-floating-label
-      opacity: 1
-      transition: opacity .2s
-    .mdc-floating-label--float-above
-      opacity: 0 !important
+    border: solid 2px black
+    background-image: url('assets/white-noise.gif')
+    &::before
+      content: ""
+      position: absolute
+      inset: 0  
+      background-color: rgba(255, 255, 255, 0.617)
+    mat-label, input, textarea, mat-select
+      font-size: 20px !important
 
 // <All mat-spinner>
 .mdc-circular-progress__indeterminate-circle-graphic

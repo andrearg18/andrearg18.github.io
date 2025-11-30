@@ -18,97 +18,99 @@
       <!-- Success message -->
       @if(isSuccessSubmission) {
       <div
-        class="--arg-text --arg-animation-strong arg-message is-flex is-flex-direction-column"
+        class="is-flex-direction-column --arg-flex-centered --arg-text --arg-animation-strong"
         [ngClass]="{ '--arg-element-opened': isSuccessSubmission }"
       >
         <span>Sent successfully!</span>
         <br />
-        <span
-          >Thank you for sending us your demo. If we are interested, we will
-          contact you :)</span
-        >
+        <span>
+          Thank you for sending us your demo. If we are interested, we will
+          contact you :)
+        </span>
       </div>
-      }
-
-      <!-- Fail message -->
-      @if(isFailedSubmission) {
-      <div
-        class="--arg-text --arg-animation-strong --arg-flex-centered"
-        [ngClass]="{ '--arg-element-opened': isFailedSubmission }"
-      >
-        <mat-icon>warning_amber</mat-icon>
-        <span>Something has gone wrong. Please try again later :(</span>
-      </div>
-      }
 
       <!-- <Form> -->
-      @if(!isSuccessSubmission) {
-      <form [formGroup]="emailForm">
-        <div class="arg-form-grid">
-          <!-- Asunto -->
-          <div>
-            <mat-form-field [subscriptSizing]="'dynamic'">
-              <mat-select formControlName="subject" matSelect>
-                <mat-option value="" disabled> Asunto </mat-option>
-                <mat-option value="a"> Opción A </mat-option>
-                <mat-option value="b"> Opción B </mat-option>
-              </mat-select>
-            </mat-form-field>
-          </div>
+      } @else {
+      <form
+        [formGroup]="emailForm"
+        class="arg-custom-animation"
+        [ngClass]="{ '--arg-element-opened': !isSuccessSubmission }"
+      >
+        <div class="fixed-grid has-1-cols m-0">
+          <div class="grid m-0">
+            <!-- Asunto -->
+            <div class="cell">
+              <mat-form-field [subscriptSizing]="'dynamic'">
+                <mat-label>Subject</mat-label>
+                <mat-select formControlName="subject" matSelect>
+                  <mat-option value="a"> Opción A </mat-option>
+                  <mat-option value="b"> Opción B </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
 
-          <!-- Email -->
-          <div>
-            <mat-form-field [subscriptSizing]="'dynamic'">
-              <mat-label>Email</mat-label>
-              <input formControlName="email" type="email" matInput />
-            </mat-form-field>
-          </div>
+            <!-- Email -->
+            <div class="cell">
+              <mat-form-field [subscriptSizing]="'dynamic'">
+                <mat-label>Email</mat-label>
+                <input formControlName="email" type="email" matInput />
+              </mat-form-field>
+            </div>
 
-          <!-- SoundCloud Link -->
-          <div class="arg-full-span">
-            <mat-form-field [subscriptSizing]="'dynamic'">
-              <mat-label>SoundCloud Link</mat-label>
-              <input formControlName="link" autocomplete="off" matInput />
-            </mat-form-field>
-          </div>
+            <!-- SoundCloud Link -->
+            <div class="cell">
+              <mat-form-field [subscriptSizing]="'dynamic'">
+                <mat-label>SoundCloud Link</mat-label>
+                <input formControlName="link" autocomplete="off" matInput />
+              </mat-form-field>
+            </div>
 
-          <!-- About -->
-          <div class="arg-cell-about arg-full-span height100">
-            <mat-form-field [subscriptSizing]="'dynamic'">
-              <mat-label>Tell us</mat-label>
-              <textarea
-                formControlName="message"
-                autocomplete="off"
-                placeholder="Tell us something about you and your name"
-                matInput
-              ></textarea>
-            </mat-form-field>
-          </div>
+            <!-- About us -->
+            <div class="cell height100">
+              <mat-form-field [subscriptSizing]="'dynamic'">
+                <mat-label>About us</mat-label>
+                <textarea
+                  formControlName="message"
+                  autocomplete="off"
+                  placeholder="Tell us something about you and your name"
+                  matInput
+                ></textarea>
+              </mat-form-field>
+            </div>
 
-          <!--Warning message -->
-          <div
-            class="--arg-text --arg-flex-centered --arg-animation-thin"
-            [ngClass]="{
-              '--arg-element-opened': showInvalidFormError,
-              '--arg-element-closed': !showInvalidFormError
-            }"
-          >
-            <mat-icon>warning_amber</mat-icon>
-            <span>You must fill in all fields</span>
-          </div>
-
-          <!-- Send button -->
-          <div class="--arg-flex-centered arg-full-span">
-            <button
-              class="--arg-button --arg-button-primary button"
-              (click)="sendEmail()"
+            <!-- Warning messages -->
+            <div
+              *ngIf="showInvalidFormError || isFailedSubmission"
+              class="cell --arg-text --arg-flex-centered --arg-animation-thin"
+              [ngClass]="{
+                '--arg-element-opened':
+                  showInvalidFormError || isFailedSubmission,
+                '--arg-element-closed':
+                  !showInvalidFormError || !isFailedSubmission
+              }"
             >
-              <mat-spinner
-                *ngIf="waitingResponse"
-                [diameter]="20"
-              ></mat-spinner>
-              <span *ngIf="!waitingResponse">Send</span>
-            </button>
+              <mat-icon>warning_amber</mat-icon>
+              <span *ngIf="showInvalidFormError">
+                You must fill in all fields
+              </span>
+              <span *ngIf="isFailedSubmission">
+                Something has gone wrong. Please try again later :(
+              </span>
+            </div>
+
+            <!-- Send button -->
+            <div class="cell --arg-flex-centered">
+              <button
+                class="--arg-button --arg-button-primary button"
+                (click)="sendEmail()"
+              >
+                <mat-spinner
+                  *ngIf="waitingResponse"
+                  [diameter]="20"
+                ></mat-spinner>
+                <span *ngIf="!waitingResponse">Send</span>
+              </button>
+            </div>
           </div>
         </div>
       </form>

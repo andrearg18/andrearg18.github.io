@@ -29,7 +29,7 @@ export class HomeComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    console.info('v2 Service and logo')
+    console.info('v3 Form styles and favicon')
     this.initForm()
   }
 
