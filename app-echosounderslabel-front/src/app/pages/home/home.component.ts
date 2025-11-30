@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
+import { EmailService } from '../../services/email.service';
 
 @Component({
   selector: 'app-home',
@@ -10,13 +11,49 @@ import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms
 export class HomeComponent implements OnInit {
   public emailForm!: UntypedFormGroup
 
+  public isFailedSubmission = false
+
+  public isSuccessSubmission = false
+
+  public showInvalidFormError = false
+
+  public submissionError = ''
+
+  public submissionMessage = ''
+
+  public waitingResponse = false
+
   constructor(
-    private formBuilder: UntypedFormBuilder
+    private formBuilder: UntypedFormBuilder,
+    private emailService: EmailService,
   ) { }
 
   ngOnInit(): void {
-    console.info('v1 Responsive structure')
+    console.info('v2 Functionalities')
     this.initForm()
+  }
+
+  public sendEmail(): void {
+    this.showInvalidFormError = false
+    if (this.emailForm.invalid) {
+      setTimeout(() => this.showInvalidFormError = true)
+    } else {
+      this.showInvalidFormError = false
+      this.waitingResponse = true
+
+      this.emailService.sendEmail(this.emailForm.value)
+        .then(() => {
+          console.info('<Sending>')
+          this.waitingResponse = false
+          this.isSuccessSubmission = true
+        })
+        .catch(error => {
+          console.error('Error sending email => "', error, '"')
+          this.waitingResponse = false
+          this.isFailedSubmission = true
+          this.emailService.setErrorLog(this.emailForm.value)
+        })
+    }
   }
 
   private initForm(): void {
@@ -24,7 +61,7 @@ export class HomeComponent implements OnInit {
       subject: ['', Validators.required],
       email: ['', Validators.required],
       link: ['', Validators.required],
-      about: ['', Validators.required],
+      message: ['', Validators.required],
     })
 
   }

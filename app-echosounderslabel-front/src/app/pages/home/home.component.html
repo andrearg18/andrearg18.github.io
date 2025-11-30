@@ -15,7 +15,34 @@
     </div>
 
     <div class="--arg-content">
+      <!-- Success message -->
+      @if(isSuccessSubmission) {
+      <div
+        class="--arg-text --arg-animation-strong arg-message is-flex is-flex-direction-column"
+        [ngClass]="{ '--arg-element-opened': isSuccessSubmission }"
+      >
+        <span>Sent successfully!</span>
+        <br />
+        <span
+          >Thank you for sending us your demo. If we are interested, we will
+          contact you :)</span
+        >
+      </div>
+      }
+
+      <!-- Fail message -->
+      @if(isFailedSubmission) {
+      <div
+        class="--arg-text --arg-animation-strong --arg-flex-centered"
+        [ngClass]="{ '--arg-element-opened': isFailedSubmission }"
+      >
+        <mat-icon>warning_amber</mat-icon>
+        <span>Something has gone wrong. Please try again later :(</span>
+      </div>
+      }
+
       <!-- <Form> -->
+      @if(!isSuccessSubmission) {
       <form [formGroup]="emailForm">
         <div class="arg-form-grid">
           <!-- Asunto -->
@@ -50,7 +77,7 @@
             <mat-form-field [subscriptSizing]="'dynamic'">
               <mat-label>Tell us</mat-label>
               <textarea
-                formControlName="about"
+                formControlName="message"
                 autocomplete="off"
                 placeholder="Tell us something about you and your name"
                 matInput
@@ -58,14 +85,34 @@
             </mat-form-field>
           </div>
 
+          <!--Warning message -->
+          <div
+            class="--arg-text --arg-flex-centered --arg-animation-thin"
+            [ngClass]="{
+              '--arg-element-opened': showInvalidFormError,
+              '--arg-element-closed': !showInvalidFormError
+            }"
+          >
+            <mat-icon>warning_amber</mat-icon>
+            <span>You must fill in all fields</span>
+          </div>
+
           <!-- Send button -->
-          <div class="arg-full-span --arg-flex-centered">
-            <button class="button --arg-button --arg-button-primary">
-              Send
+          <div class="--arg-flex-centered arg-full-span">
+            <button
+              class="--arg-button --arg-button-primary button"
+              (click)="sendEmail()"
+            >
+              <mat-spinner
+                *ngIf="waitingResponse"
+                [diameter]="20"
+              ></mat-spinner>
+              <span *ngIf="!waitingResponse">Send</span>
             </button>
           </div>
         </div>
       </form>
+      }
     </div>
   </div>
 

@@ -27,11 +27,10 @@ div:has(.--arg-container-page)
     width: 85%
     color: white
     padding: 20px
-    line-height: .8
     font-size: clamp(70px, 10vw, 10vh)
     font-weight: bold
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
     span
+      line-height: .8
       text-wrap: balance
       
   // menus
@@ -42,6 +41,7 @@ div:has(.--arg-container-page)
       gap: 60px
       padding: 0 40px
       color: white
+      width: max-content
     span
       cursor: pointer
       &:hover 
@@ -95,9 +95,9 @@ div:has(.--arg-container-page)
   height: 80%
   padding: 20px
 
-@media (min-width: 800px)
+@media (min-width: 700px)
   .--arg-row-top, .--arg-row-bottom
-    height: 15% !important
+    height: 10% !important
   .--arg-container-page
     .--arg-header
       flex-direction: column
@@ -111,18 +111,20 @@ div:has(.--arg-container-page)
     .--arg-content
       height: 70%
 
-@media (min-width: 1500px)
+@media (min-width: 1100px)
   .--arg-row-top, .--arg-row-bottom
-    height: 20% !important
+    height: 15% !important
   .--arg-container-page
     flex-direction: row
     align-items: center
     .--arg-header
       width: 50%
       justify-content: center
+      align-items: center
     .--arg-title
       width: fit-content
     .--arg-menus 
+      margin-left: 70%
       justify-content: center
       div
         flex-direction: column
@@ -132,14 +134,42 @@ div:has(.--arg-container-page)
       width: 50%
       height: fit-content
       
-@media (min-width: 1800px)
-  .--arg-header
-    align-items: center
-  .--arg-menus 
-    margin-left: 70%
+// @media (min-width: 1800px)
+  // .--arg-header
+  //   align-items: center
+  // .--arg-menus 
+  //   margin-left: 70%
 /** /principal style/ **/
 
 /** Global own class **/
+.--arg-text
+  color: white !important
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+  font-size: 15px
+  padding-top: 5px
+  padding-bottom: 5px
+  mat-icon
+    font-size: 20px
+    height: fit-content
+
+.--arg-button
+  height: 35px
+  padding: 0
+  min-width: 60px
+  border: none
+
+.--arg-button-primary
+  width: 100px
+  background: black
+  color: white
+  &:not(.disabled):hover
+    background-color: #0000003d
+    transform: scale(1.05)
+  &.disabled
+    color: #575757
+    background-color: #8d8282bd
+    pointer-events: none
+
 .--arg-height100
   height: 100vh !important
 
@@ -147,19 +177,6 @@ div:has(.--arg-container-page)
   display: flex !important
   justify-content: center !important
   align-items: center !important
-
-.--arg-button
-  height: 35px
-  padding: 0
-  min-width: 60px
-  border: none
-  &:hover
-    background-color: #555555
-    transform: scale(1.05)
-.--arg-button-primary
-  width: 100px
-  background: #353535
-  color: white
 /** /global own class/ **/
 
 // <Scroll bar>
@@ -194,3 +211,61 @@ mat-form-field
       transition: opacity .2s
     .mdc-floating-label--float-above
       opacity: 0 !important
+
+// <All mat-spinner>
+.mdc-circular-progress__indeterminate-circle-graphic
+  stroke: white !important
+
+.--arg-text, span
+  line-height: 1
+
+// ANIMATIONS
+.--arg-animation-thin, .--arg-animation-strong
+  opacity: 0
+
+.--arg-animation-thin
+  &.--arg-element-opened
+    opacity: 1
+    animation: elementActiveThin 1s ease forwards
+  &.--element-closed
+    animation: elementLeaveThin 1s ease forwards
+
+.--arg-animation-strong
+  &.--arg-element-opened
+    animation: elementActiveStrong 1s ease forwards
+  &.--element-closed
+    animation: elementLeaveStrong 1s ease forwards
+  
+@keyframes elementActiveThin 
+  0%
+    opacity: 0
+    transform: scale(.9)
+  100% 
+    opacity: 1
+    transform: scale(1)
+
+@keyframes elementLeaveThin 
+  0% 
+    opacity: 1
+    transform: scale(1)
+  100% 
+    opacity: 0
+    transform: scale(.9)
+    height: 0
+
+@keyframes elementActiveStrong
+  0%
+    opacity: 0
+    transform: scale(.3)
+  100% 
+    opacity: 1
+    transform: scale(1)
+
+@keyframes elementLeaveStrong
+  0% 
+    opacity: 1
+    transform: scale(1)
+  100% 
+    opacity: 0
+    transform: scale(.3)
+    height: 0

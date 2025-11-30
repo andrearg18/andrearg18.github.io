@@ -7,11 +7,15 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MenuModule } from '../../components/layouts/menu/menu.module';
+import { MatIcon } from "@angular/material/icon";
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 const MATERIAL = [
   MatFormFieldModule,
   MatInputModule,
-  MatSelectModule
+  MatSelectModule,
+  MatIcon,
+  MatProgressSpinnerModule
 ]
 
 @NgModule({
@@ -21,7 +25,7 @@ const MATERIAL = [
     CommonModule,
     ReactiveFormsModule,
     HomeRoutingModule,
-    MenuModule
+    MenuModule,
   ],
 })
 export class HomeModule { }
