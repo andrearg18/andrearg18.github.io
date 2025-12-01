@@ -2,16 +2,16 @@ form
   width: 100% !important
   max-height: 60vh
   opacity: 0
+  &.--arg-element-opened
+    animation: elementActiveStrong 1s ease forwards
   button
     min-width: 150px
 
-@media (max-width: 700px)
-  form.--arg-element-opened
-    animation: elementActiveStrong 1s ease forwards
-
 @media (min-width: 700px)
   form.--arg-element-opened
-    animation: formActiveThin 1s ease forwards
+    opacity: 1
+    transform: scale(.8)
+    animation: formActiveThin 1s ease forwards !important
 
 @keyframes formActiveThin
   0%
