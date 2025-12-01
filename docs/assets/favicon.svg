@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg id="Capa_2" data-name="Capa 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 829.8 227.42">
+<svg id="Capa_2" data-name="Capa 2" xmlns="http://www.w3.org/2000/svg" viewBox="10 20 740 170">
   <defs>
     <style>
       .cls-1 {
@@ -33,7 +33,7 @@
       }
 
       .cls-7, .cls-8 {
-        fill: #fff;
+        fill: #000000ff;
       }
 
       .cls-9 {
@@ -56,10 +56,19 @@
       .cls-12 {
         letter-spacing: -.05em;
       }
+
+      #LOGO {
+        font-size: 120px;
+        font-family: "Arial";
+        font-weight: "700"; 
+      }
+
     </style>
   </defs>
-  <g id="LOGO">
-    <text class="cls-8" transform="translate(0 105.85)"><tspan class="cls-10" x="0" y="0">E</tspan><tspan class="cls-6" x="83.31" y="0">C</tspan><tspan class="cls-3" x="183.18" y="0">H</tspan><tspan class="cls-1" x="291.52" y="0">O</tspan><tspan class="cls-4" x="0" y="79.86">S</tspan><tspan class="cls-5" x="100.74" y="79.86">O</tspan><tspan class="cls-6" x="201.61" y="79.86">U</tspan><tspan class="cls-2" x="304.34" y="79.86">N</tspan><tspan class="cls-6" x="410.44" y="79.86">DE</tspan><tspan class="cls-9" x="592" y="79.86">R</tspan><tspan class="cls-11" x="683.78" y="79.86">S</tspan></text>
-    <text class="cls-7" transform="translate(781.66 87.16)"><tspan class="cls-12" x="0" y="0">T</tspan><tspan x="21.06" y="0">M</tspan></text>
+  <g id="LOGO" style="font-family: 'Monument Extended', sans-serif;">
+    <!-- <text class="cls-8" transform="translate(0 105.85)"><tspan class="cls-10" x="0" y="0">E</tspan><tspan class="cls-6" x="83.31" y="0">C</tspan><tspan class="cls-3" x="183.18" y="0">H</tspan><tspan class="cls-1" x="291.52" y="0">O</tspan><tspan class="cls-4" x="0" y="79.86">S</tspan><tspan class="cls-5" x="100.74" y="79.86">O</tspan><tspan class="cls-6" x="201.61" y="79.86">U</tspan><tspan class="cls-2" x="304.34" y="79.86">N</tspan><tspan class="cls-6" x="410.44" y="79.86">DE</tspan><tspan class="cls-9" x="592" y="79.86">R</tspan><tspan class="cls-11" x="683.78" y="79.86">S</tspan></text>
+    <text class="cls-7" transform="translate(781.66 87.16)"><tspan class="cls-12" x="0" y="0">T</tspan><tspan x="21.06" y="0">M</tspan></text> -->
+    <text transform="translate(10 105)"><tspan>ECHO</tspan></text>
+    <text transform="translate(10 185)"><tspan>SOUNDERS</tspan></text>
   </g>
 </svg>

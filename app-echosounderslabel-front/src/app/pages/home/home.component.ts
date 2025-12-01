@@ -11,6 +11,8 @@ import { EmailService } from '../../services/email.service';
 export class HomeComponent implements OnInit {
   public emailForm!: UntypedFormGroup
 
+  public isUnavailableService = false
+
   public isFailedSubmission = false
 
   public isSuccessSubmission = false
@@ -23,13 +25,15 @@ export class HomeComponent implements OnInit {
 
   public waitingResponse = false
 
+  private fails = 0
+
   constructor(
     private formBuilder: UntypedFormBuilder,
     private emailService: EmailService,
   ) { }
 
   ngOnInit(): void {
-    console.info('v1.12 Test fix form 9')
+    console.info('v1.13 Secondary service')
     this.initForm()
   }
 
@@ -49,10 +53,30 @@ export class HomeComponent implements OnInit {
         })
         .catch(error => {
           console.error('Error sending email => "', error, '"')
-          this.waitingResponse = false
           this.isFailedSubmission = true
-          this.emailService.setErrorLog(this.emailForm.value)
+          this.handleError()
         })
+    }
+  }
+
+  private handleError(): void {
+    this.fails++
+    if (this.fails == 2) {
+      this.emailService.sendEmail2(this.emailForm.value)
+        .then(() => {
+          console.info('<Sending by secondary method>')
+          this.waitingResponse = false
+          this.isSuccessSubmission = true
+        })
+        .catch(error => {
+          console.error('Error sending email by secondary method => "', error, '"')
+          this.isFailedSubmission = false
+          this.waitingResponse = false
+          this.isUnavailableService = true
+        })
+
+    } else {
+      setTimeout(() => this.waitingResponse = false, 10000)
     }
   }
 

@@ -79,13 +79,20 @@
 
             <!-- Warning messages -->
             <div
-              *ngIf="showInvalidFormError || isFailedSubmission"
               class="cell --arg-text --arg-flex-centered --arg-animation-thin"
               [ngClass]="{
+                'is-hidden':
+                  showInvalidFormError ||
+                  isFailedSubmission ||
+                  isUnavailableService,
                 '--arg-element-opened':
-                  showInvalidFormError || isFailedSubmission,
+                  showInvalidFormError ||
+                  isFailedSubmission ||
+                  isUnavailableService,
                 '--arg-element-closed':
-                  !showInvalidFormError || !isFailedSubmission
+                  !showInvalidFormError ||
+                  !isFailedSubmission ||
+                  !isUnavailableService
               }"
             >
               <mat-icon>warning_amber</mat-icon>
@@ -93,6 +100,10 @@
                 You must fill in all fields
               </span>
               <span *ngIf="isFailedSubmission">
+                Something has gone wrong. Please wait a few seconds and try
+                again :(
+              </span>
+              <span *ngIf="isUnavailableService">
                 Something has gone wrong. Please try again later :(
               </span>
             </div>
@@ -101,6 +112,9 @@
             <div class="cell --arg-flex-centered">
               <button
                 class="--arg-button --arg-button-primary button"
+                [ngClass]="{
+                  disabled: isUnavailableService || waitingResponse
+                }"
                 (click)="sendEmail()"
               >
                 <mat-spinner

@@ -11,22 +11,23 @@ export class MenuComponent {
   public menuOpen = false
 
   public goToContact(): void {
-
+    window.open('https://www.instagram.com/echosounders', '_blank')
   }
 
   public goToAboutUs(): void {
+    window.open('', '_blank')
 
   }
 
-  public goToBeaport(): void {
-
+  public goToBeatport(): void {
+    window.open('https://on.soundcloud.com/VrWdUGyGyOTnKS5aUw', '_blank')
   }
 
   public goToYoutube(): void {
-
+    window.open('', '_blank')
   }
 
-  public goToinfo(): void {
-
+  public goToInfo(): void {
+    window.open('', '_blank')
   }
 }

@@ -1,0 +1,50 @@
+
+.--arg-animation-thin, .--arg-animation-strong
+  opacity: 0
+
+.--arg-animation-thin
+  &.--arg-element-opened
+    opacity: 1
+    animation: elementActiveThin 1s ease forwards
+  &.--element-closed
+    animation: elementLeaveThin 1s ease forwards
+
+.--arg-animation-strong
+  &.--arg-element-opened
+    animation: elementActiveStrong 1s ease forwards
+  &.--element-closed
+    animation: elementLeaveStrong 1s ease forwards
+    
+@keyframes elementActiveThin 
+  0%
+    opacity: 0
+    transform: scale(.9)
+  100% 
+    opacity: 1
+    transform: scale(1)
+
+@keyframes elementLeaveThin 
+  0% 
+    opacity: 1
+    transform: scale(1)
+  100% 
+    opacity: 0
+    transform: scale(.9)
+    height: 0
+
+@keyframes elementActiveStrong
+  0%
+    opacity: 0
+    transform: scale(.3)
+  100% 
+    opacity: 1
+    transform: scale(1)
+
+@keyframes elementLeaveStrong
+  0% 
+    opacity: 1
+    transform: scale(1)
+  100% 
+    opacity: 0
+    transform: scale(.3)
+    height: 0
