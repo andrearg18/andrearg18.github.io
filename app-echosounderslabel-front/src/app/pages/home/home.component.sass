@@ -3,7 +3,6 @@ form
   max-height: 60vh
   opacity: 0
   &.--arg-element-opened
-    opacity: 1
     animation: elementActiveStrong 1s ease forwards
 
   .arg-col-span-2-mobile
@@ -12,10 +11,15 @@ form
   button
     min-width: 150px
 
-@media (min-width: 1100px)
+@media (max-width: 700px)
   form.--arg-element-opened
-    opacity: 1
-    animation: formActiveThin 1s ease forwards !important
+    animation: elementActiveStrong 1s ease forwards
+
+@media (min-width: 700px)
+  form.--arg-element-opened
+    animation: formActiveThin 1s ease forwards
+
+@media (min-width: 1100px)
   .arg-col-span-2-mobile
     grid-column: span 1 !important
 

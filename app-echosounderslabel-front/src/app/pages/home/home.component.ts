@@ -29,7 +29,7 @@ export class HomeComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    console.info('v1.9 Test fix form 6')
+    console.info('v1.10 Test fix form 7')
     this.initForm()
   }
 
