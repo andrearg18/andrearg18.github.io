@@ -25,6 +25,16 @@ export class HomeComponent implements OnInit {
 
   public waitingResponse = false
 
+  private readonly _SUCCESS_SUBMISSION_MESSAGE = 'Sent successfully!\nThank you for sending us your demo. If we are interested, we will contact you :)'
+
+  private readonly _INVALID_FORM_MESSAGE = 'You must fill in all fields'
+
+  private readonly _FAILED_SUBMISSION_MESSAGE = 'Something has gone wrong. Please wait a few seconds and try again :('
+
+  private readonly _UNAVAILABLE_SERVICE_MESSAGE = 'Something has gone wrong. Please try again later :('
+
+  private readonly _EXPIRE_TIME = 600000
+
   private fails = 0
 
   constructor(
@@ -33,8 +43,10 @@ export class HomeComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    console.info('v1.13 Secondary service')
-    this.initForm()
+    console.info('v1.14 Form styles and localStorage')
+    this._initForm()
+    this._handleLocalStorage()
+    this._setValueChanges()
   }
 
   public sendEmail(): void {
@@ -46,47 +58,83 @@ export class HomeComponent implements OnInit {
       this.waitingResponse = true
 
       this.emailService.sendEmail(this.emailForm.value)
-        .then(() => {
-          console.info('<Sending>')
-          this.waitingResponse = false
-          this.isSuccessSubmission = true
-        })
-        .catch(error => {
-          console.error('Error sending email => "', error, '"')
-          this.isFailedSubmission = true
-          this.handleError()
-        })
+        .then(() => this._handleCompletedAction)
+        .catch(error => this._handleError(error))
     }
   }
 
-  private handleError(): void {
-    this.fails++
-    if (this.fails == 2) {
-      this.emailService.sendEmail2(this.emailForm.value)
-        .then(() => {
-          console.info('<Sending by secondary method>')
-          this.waitingResponse = false
-          this.isSuccessSubmission = true
-        })
-        .catch(error => {
-          console.error('Error sending email by secondary method => "', error, '"')
-          this.isFailedSubmission = false
-          this.waitingResponse = false
-          this.isUnavailableService = true
-        })
-
+  public getMessage(): string {
+    if (this.isSuccessSubmission) {
+      return this._SUCCESS_SUBMISSION_MESSAGE
+    } else if (this.showInvalidFormError) {
+      return this._INVALID_FORM_MESSAGE
+    } else if (this.isFailedSubmission) {
+      return this._FAILED_SUBMISSION_MESSAGE
+    } else if (this.isUnavailableService) {
+      return this._UNAVAILABLE_SERVICE_MESSAGE
     } else {
-      setTimeout(() => this.waitingResponse = false, 10000)
+      return ''
     }
   }
 
-  private initForm(): void {
+  private _handleLocalStorage(): void {
+    const form = localStorage.getItem('form')
+    const unavailableTimeService = localStorage.getItem('unavailableTimeService')
+
+    if (localStorage.getItem('sentForm')) {
+      this.isSuccessSubmission = true
+    } else if (form) {
+      this.emailForm.patchValue(JSON.parse(form))
+    }
+    if (unavailableTimeService && Date.now() > JSON.parse(unavailableTimeService)) {
+      localStorage.removeItem('unavailableTimeService')
+    } else if (unavailableTimeService) {
+      this.isUnavailableService = true
+    }
+
+  }
+
+  private _setValueChanges(): void {
+    this.emailForm.valueChanges.pipe().subscribe(value => {
+      localStorage.setItem('form', JSON.stringify(value))
+    })
+  }
+
+  private _initForm(): void {
     this.emailForm = this.formBuilder.group({
       subject: ['', Validators.required],
       email: ['', Validators.required],
       link: ['', Validators.required],
       message: ['', Validators.required],
     })
-
   }
+
+  private _handleError(error: any): void {
+    console.error('Error sending email => "', error, '"')
+    this.isFailedSubmission = true
+    this.fails++
+    if (this.fails == 2) {
+      this.emailService.sendEmail2(this.emailForm.value)
+        .then(() => this._handleCompletedAction(true))
+        .catch(error => this._handleUnavailableService(error))
+    } else {
+      setTimeout(() => this.waitingResponse = false, 10000)
+    }
+  }
+
+  private _handleCompletedAction(via2 = false): void {
+    console.info(via2 ? '<Sending by secondary method>' : '<Sending>')
+    this.waitingResponse = false
+    this.isSuccessSubmission = true
+    localStorage.setItem('sentForm', 'true')
+  }
+
+  private _handleUnavailableService(error: any): void {
+    console.error('Error sending email by secondary method => "', error, '"')
+    this.isFailedSubmission = false
+    this.waitingResponse = false
+    this.isUnavailableService = true
+    localStorage.setItem('unavailableTimeService', JSON.stringify(Date.now() + this._EXPIRE_TIME))
+  }
+
 }

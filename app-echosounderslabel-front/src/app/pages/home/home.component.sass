@@ -1,11 +1,25 @@
 form
-  width: 100% !important
   max-height: 60vh
   opacity: 0
   &.--arg-element-opened
     animation: elementActiveStrong 1s ease forwards
   button
     min-width: 150px
+
+.arg-warning-flex
+  display: flex !important
+  justify-content: center
+  align-items: center
+  flex-direction: column
+  gap: 5px
+  span
+    text-align: center
+
+  @media (min-width: 700px)
+    flex-direction: row
+    span
+      text-align: left
+
 
 @media (min-width: 700px)
   form.--arg-element-opened

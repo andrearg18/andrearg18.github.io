@@ -18,20 +18,18 @@
       <!-- Success message -->
       @if(isSuccessSubmission) {
       <div
-        class="is-flex-direction-column --arg-flex-centered --arg-text --arg-animation-strong"
+        class="width100 is-flex-direction-column --arg-flex-centered --arg-text --arg-animation-strong"
         [ngClass]="{ '--arg-element-opened': isSuccessSubmission }"
       >
-        <span>Sent successfully!</span>
-        <br />
-        <span>
-          Thank you for sending us your demo. If we are interested, we will
-          contact you :)
+        <span class="has-text-centered --arg-line-break">
+          {{ getMessage() }}
         </span>
       </div>
 
       <!-- <Form> -->
       } @else {
       <form
+        class="width100"
         [formGroup]="emailForm"
         [ngClass]="{ '--arg-element-opened': !isSuccessSubmission }"
       >
@@ -79,7 +77,7 @@
 
             <!-- Warning messages -->
             <div
-              class="cell --arg-text --arg-flex-centered --arg-animation-thin"
+              class="cell --arg-text arg-warning-flex --arg-animation-thin"
               [ngClass]="{
                 'is-hidden':
                   showInvalidFormError ||
@@ -96,16 +94,7 @@
               }"
             >
               <mat-icon>warning_amber</mat-icon>
-              <span *ngIf="showInvalidFormError">
-                You must fill in all fields
-              </span>
-              <span *ngIf="isFailedSubmission">
-                Something has gone wrong. Please wait a few seconds and try
-                again :(
-              </span>
-              <span *ngIf="isUnavailableService">
-                Something has gone wrong. Please try again later :(
-              </span>
+              <span>{{ getMessage() }}</span>
             </div>
 
             <!-- Send button -->
