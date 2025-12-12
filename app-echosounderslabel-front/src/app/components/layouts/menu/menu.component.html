@@ -1,11 +1,11 @@
 <ng-container>
   <!-- Collapse button -->
-  <div class="--arg-collapse-menu" (click)="menuOpen = true">
+  <div class="arg-collapse-menu" (click)="menuOpen = true">
     <mat-icon>menu</mat-icon>
   </div>
 
   <!-- Collapse menu -->
-  <nav class="--arg-nav-menu" [class.open]="menuOpen">
+  <nav class="arg-nav-menu" [class.open]="menuOpen">
     <mat-icon (click)="menuOpen = false">close</mat-icon>
     <span (click)="goToContact()">CONTACT</span>
     <span (click)="goToAboutUs()">ABOUT US</span>
@@ -15,7 +15,7 @@
   </nav>
 
   <!-- Menus -->
-  <div class="--arg-menus">
+  <div class="arg-menus">
     <div>
       <span (click)="goToContact()">CONTACT</span>
       <span (click)="goToAboutUs()">ABOUT US</span>

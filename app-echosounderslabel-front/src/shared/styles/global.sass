@@ -1,3 +1,7 @@
+*
+  font-family: 'Monument Extended'
+  line-height: 1
+
 // Scroll bar
 ::-webkit-scrollbar
   width: 5px
@@ -26,15 +30,16 @@ mat-form-field
     mat-label, input, textarea, mat-select
       font-size: 20px !important
 
-  .mdc-text-field--invalid, .mdc-text-field--focused 
-    label
-      color: #404654 !important
+  .mdc-text-field--invalid, .mdc-text-field--focused label
+    color: #404654 !important
   .mdc-line-ripple, .mat-mdc-form-field-required-marker
     display: none !important
+  .mat-mdc-select-arrow svg
+    fill: black
+
+mat-option span 
+  font-family: 'Monument Extended' !important
 
 // All mat-spinner
 .mdc-circular-progress__indeterminate-circle-graphic
   stroke: white !important
-
-.--arg-text, span
-  line-height: 1

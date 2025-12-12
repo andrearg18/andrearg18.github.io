@@ -6,8 +6,7 @@
   <div class="--arg-container-page">
     <div class="--arg-header">
       <div class="--arg-title">
-        <span>ECHO</span>
-        <span>SOUNDERS</span>
+        <img src="assets/favicon-page.svg" alt="Echo Sounders" />
       </div>
 
       <!-- Menu -->
@@ -40,8 +39,8 @@
               <mat-form-field [subscriptSizing]="'dynamic'">
                 <mat-label>Subject</mat-label>
                 <mat-select formControlName="subject" matSelect>
-                  <mat-option value="a"> Opción A </mat-option>
-                  <mat-option value="b"> Opción B </mat-option>
+                  <mat-option value="Pon Dub Techno">Pon Dub Techno</mat-option>
+                  <mat-option value="Hypnotic/Raw">Hypnotic/Raw</mat-option>
                 </mat-select>
               </mat-form-field>
             </div>
@@ -74,46 +73,43 @@
                 ></textarea>
               </mat-form-field>
             </div>
-
-            <!-- Warning messages -->
-            <div
-              class="cell --arg-text arg-warning-flex --arg-animation-thin"
-              [ngClass]="{
-                'is-hidden':
-                  showInvalidFormError ||
-                  isFailedSubmission ||
-                  isUnavailableService,
-                '--arg-element-opened':
-                  showInvalidFormError ||
-                  isFailedSubmission ||
-                  isUnavailableService,
-                '--arg-element-closed':
-                  !showInvalidFormError ||
-                  !isFailedSubmission ||
-                  !isUnavailableService
-              }"
-            >
-              <mat-icon>warning_amber</mat-icon>
-              <span>{{ getMessage() }}</span>
-            </div>
-
-            <!-- Send button -->
-            <div class="cell --arg-flex-centered">
-              <button
-                class="--arg-button --arg-button-primary button"
-                [ngClass]="{
-                  disabled: isUnavailableService || waitingResponse
-                }"
-                (click)="sendEmail()"
-              >
-                <mat-spinner
-                  *ngIf="waitingResponse"
-                  [diameter]="20"
-                ></mat-spinner>
-                <span *ngIf="!waitingResponse">Send</span>
-              </button>
-            </div>
           </div>
+        </div>
+
+        <!-- Warning messages -->
+        <div
+          class="cell --arg-text arg-warning-flex --arg-animation-thin"
+          [ngClass]="{
+            'is-hidden':
+              showInvalidFormError ||
+              isFailedSubmission ||
+              isUnavailableService,
+            '--arg-element-opened':
+              showInvalidFormError ||
+              isFailedSubmission ||
+              isUnavailableService,
+            '--arg-element-closed':
+              !showInvalidFormError ||
+              !isFailedSubmission ||
+              !isUnavailableService
+          }"
+        >
+          <mat-icon>warning_amber</mat-icon>
+          <span [innerHTML]="getMessage()"></span>
+        </div>
+
+        <!-- Send button -->
+        <div class="cell --arg-flex-centered pb-1">
+          <button
+            class="--arg-button --arg-button-primary button"
+            [ngClass]="{
+              disabled: isUnavailableService || waitingResponse
+            }"
+            (click)="sendEmail()"
+          >
+            <mat-spinner *ngIf="waitingResponse" [diameter]="20"></mat-spinner>
+            <span *ngIf="!waitingResponse">Send</span>
+          </button>
         </div>
       </form>
       }
@@ -121,5 +117,7 @@
   </div>
 
   <!-- <ROW BOTTOM> -->
-  <div class="--arg-row-bottom"></div>
+  <div class="--arg-row-bottom --arg-flex-centered">
+    <app-footer></app-footer>
+  </div>
 </div>

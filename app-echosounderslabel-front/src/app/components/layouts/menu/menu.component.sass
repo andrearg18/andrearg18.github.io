@@ -1,0 +1,76 @@
+// Menu parent
+.arg-menus 
+  display: none
+  width: 100%
+  > div
+    gap: 30px
+    padding: 0 10px
+    color: white
+    width: 100%
+  span
+    cursor: pointer
+    white-space: nowrap
+    &:hover 
+      opacity: 0.6
+
+// Collapse menu
+.arg-collapse-menu
+  width: 15%
+  display: flex
+  align-items: end
+  justify-content: end 
+  cursor: pointer
+  color: white
+  padding: 10px 10px 10px 0
+  width: 100%
+  mat-icon
+    width: fit-content
+    height: fit-content
+    font-size: 40px
+    
+// Nav
+.arg-nav-menu
+  display: none
+  flex-direction: column
+  gap: 20px
+  position: fixed
+  top: 0
+  right: 0
+  width: 70vw
+  height: 100vh
+  background-color: black
+  transition: right 0.3s ease
+  z-index: 999
+  mat-icon
+    cursor: pointer
+    width: fit-content
+    height: fit-content
+    font-size: 50px
+    padding: 20px
+  span
+    padding-left: 50px
+  &.open 
+    display: flex
+    span 
+      color: white
+      font-size: 2vh
+      cursor: pointer
+      transition: 0.2s
+    span:hover 
+      opacity: 0.6
+
+// @Medias
+@media (min-width: 700px)
+  .arg-menus, .arg-menus > div
+    display: flex
+  .arg-collapse-menu
+    display: none
+
+@media (min-width: 1100px)
+  .arg-menus 
+    margin-left: 70%
+    justify-content: center
+    div
+      flex-direction: column
+      align-items: flex-start
+      gap: 0

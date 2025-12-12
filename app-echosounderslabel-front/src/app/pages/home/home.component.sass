@@ -1,10 +1,15 @@
 form
   max-height: 60vh
+  max-width: 900px
   opacity: 0
+  overflow: auto
   &.--arg-element-opened
     animation: elementActiveStrong 1s ease forwards
   button
     min-width: 150px
+
+mat-form-field:has(textarea)
+  min-height: 150px
 
 .arg-warning-flex
   display: flex !important
@@ -15,23 +20,14 @@ form
   span
     text-align: center
 
-  @media (min-width: 700px)
-    flex-direction: row
-    span
-      text-align: left
-
-
 @media (min-width: 700px)
   form.--arg-element-opened
     opacity: 1
     transform: scale(.8)
-    animation: formActiveThin 1s ease forwards !important
+    animation: elementActiveStrong 1s ease forwards !important
 
-@keyframes formActiveThin
-  0%
-    opacity: 0
-    transform: scale(.3)
-  100% 
-    opacity: 1
-    transform: scale(.8)
+@media (min-width: 1100px)
+  form
+    max-height: none
+    overflow: hidden
 

@@ -43,7 +43,7 @@ export class HomeComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    console.info('v1.14 Form styles and localStorage')
+    console.info('v1.15 Fonts & Footer')
     this._initForm()
     this._handleLocalStorage()
     this._setValueChanges()
@@ -69,9 +69,9 @@ export class HomeComponent implements OnInit {
     } else if (this.showInvalidFormError) {
       return this._INVALID_FORM_MESSAGE
     } else if (this.isFailedSubmission) {
-      return this._FAILED_SUBMISSION_MESSAGE
+      return this._FAILED_SUBMISSION_MESSAGE.replace(/([\p{L}\p{N}_]+)(\s*:\()/gu, `<span class="--arg-line--nobreak">$1 :(</span>`)
     } else if (this.isUnavailableService) {
-      return this._UNAVAILABLE_SERVICE_MESSAGE
+      return this._UNAVAILABLE_SERVICE_MESSAGE.replace(/([\p{L}\p{N}_]+)(\s*:\()/gu, `<span class="--arg-line--nobreak">$1 :(</span>`)
     } else {
       return ''
     }
