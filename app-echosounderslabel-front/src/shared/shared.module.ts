@@ -3,13 +3,18 @@ import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatButtonModule } from '@angular/material/button';
-import { MenuModule } from '../app/components/layouts/menu/menu.module';
-import { FooterModule } from '../app/components/layouts/footer/footer.module';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
+import { CoreModule } from '../app/components/layouts/core/core.module';
 
 const MATERIAL = [
   MatIconModule,
   MatProgressSpinnerModule,
   MatButtonModule,
+  MatFormFieldModule,
+  MatInputModule,
+  MatSelectModule,
 ]
 
 @NgModule({
@@ -19,8 +24,6 @@ const MATERIAL = [
   ],
   exports: [
     CommonModule,
-    MenuModule,
-    FooterModule,
     MATERIAL,
   ]
 })
