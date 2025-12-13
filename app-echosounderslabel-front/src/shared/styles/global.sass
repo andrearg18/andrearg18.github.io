@@ -19,23 +19,32 @@
 mat-form-field
   width: 100%
   .mdc-text-field
-    border-radius: 3px
-    border: solid 2px black
-    background-image: url('../../assets/white-noise.gif')
-    &::before
-      content: ""
-      position: absolute
-      inset: 0  
-      background-color: rgba(255, 255, 255, 0.617)
+    border-radius: 10px
+    background: rgba(255, 255, 255, 0.08) !important
+    backdrop-filter: blur(30px) saturate(160%) !important
+    -webkit-backdrop-filter: blur(30px) saturate(160%) !important
+    border: 1px solid rgba(255, 255, 255, 0.18)
     mat-label, input, textarea, mat-select
-      font-size: 20px !important
+      font-size: 17px !important
+      color: #c6c6c6 !important
 
+  .mdc-floating-label--float-above
+    display: none !important
+  .mdc-line-ripple
+    display: none !important
+  .mat-mdc-form-field-infix:not(:has(textarea))
+    display: flex
+    align-items: center
+    padding: 0
   .mdc-text-field--invalid, .mdc-text-field--focused label
     color: #404654 !important
-  .mdc-line-ripple, .mat-mdc-form-field-required-marker
-    display: none !important
+  .mat-mdc-form-field-required-marker
+    color: #8c8c8c !important
+    position: relative
+    top: -2px
   .mat-mdc-select-arrow svg
-    fill: black
+    fill: #c6c6c6
+    padding-top: 15px
 
 mat-option span 
   font-family: 'Monument Extended' !important

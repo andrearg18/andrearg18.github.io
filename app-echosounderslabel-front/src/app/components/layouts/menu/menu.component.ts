@@ -11,23 +11,22 @@ export class MenuComponent {
   public menuOpen = false
 
   public goToContact(): void {
-    window.open('https://www.instagram.com/echosounders', '_blank')
+    window.open('mailto:echosounderslabel@gmail.com', '_blank')
   }
 
   public goToAboutUs(): void {
-    window.open('', '_blank')
-
+    window.open('https://www.instagram.com/echosounders', '_blank')
   }
 
-  public goToBeatport(): void {
+  public goToSoundCloud(): void {
     window.open('https://on.soundcloud.com/VrWdUGyGyOTnKS5aUw', '_blank')
   }
 
-  public goToYoutube(): void {
-    window.open('', '_blank')
-  }
+  // public goToYoutube(): void {
+  //   window.open('', '_blank')
+  // }
 
-  public goToInfo(): void {
-    window.open('', '_blank')
-  }
+  // public goToInfo(): void {
+  //   window.open('', '_blank')
+  // }
 }

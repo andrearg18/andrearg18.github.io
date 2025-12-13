@@ -43,7 +43,7 @@ export class HomeComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    console.info('v1.16 Legal pages')
+    console.info('v1.17 Form styles & Functional sending')
     this._initForm()
     this._handleLocalStorage()
     this._setValueChanges()
@@ -102,7 +102,7 @@ export class HomeComponent implements OnInit {
 
   private _initForm(): void {
     this.emailForm = this.formBuilder.group({
-      subject: ['', Validators.required],
+      genre: ['', Validators.required],
       email: ['', Validators.required],
       link: ['', Validators.required],
       message: ['', Validators.required],

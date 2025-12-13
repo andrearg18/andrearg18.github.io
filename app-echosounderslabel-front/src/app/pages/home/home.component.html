@@ -22,9 +22,9 @@
         <!-- Asunto -->
         <div class="cell">
           <mat-form-field [subscriptSizing]="'dynamic'">
-            <mat-label>Subject</mat-label>
-            <mat-select formControlName="subject" matSelect>
-              <mat-option value="Pon Dub Techno">Pon Dub Techno</mat-option>
+            <mat-label>Music genre</mat-label>
+            <mat-select formControlName="genre" matSelect>
+              <mat-option value="Dub Techno">Dub Techno</mat-option>
               <mat-option value="Hypnotic/Raw">Hypnotic/Raw</mat-option>
             </mat-select>
           </mat-form-field>
@@ -49,11 +49,10 @@
         <!-- About us -->
         <div class="cell height100">
           <mat-form-field [subscriptSizing]="'dynamic'">
-            <mat-label>About us</mat-label>
+            <mat-label>Tell us something about you and your music</mat-label>
             <textarea
               formControlName="message"
               autocomplete="off"
-              placeholder="Tell us something about you and your name"
               matInput
             ></textarea>
           </mat-form-field>
@@ -87,7 +86,7 @@
         (click)="sendEmail()"
       >
         <mat-spinner *ngIf="waitingResponse" [diameter]="20"></mat-spinner>
-        <span *ngIf="!waitingResponse">Send</span>
+        <span *ngIf="!waitingResponse">SEND</span>
       </button>
     </div>
   </form>

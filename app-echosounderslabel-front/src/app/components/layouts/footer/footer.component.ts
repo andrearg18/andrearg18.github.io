@@ -23,15 +23,6 @@ export class FooterComponent {
 
   @Output() public showCookiesChange = new EventEmitter<boolean>()
 
-  public goHome(): void {
-    // this._goPage('')
-    this.showContent = true
-    this.showTerms = false
-    this.showPrivacy = false
-    this.showCookies = false
-    this._emitAll()
-  }
-
   public goTerms(): void {
     // this._goPage('terms')
     this.showContent = false
