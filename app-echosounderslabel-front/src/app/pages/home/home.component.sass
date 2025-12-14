@@ -9,15 +9,18 @@ form
     min-width: 150px
 
 mat-form-field:has(textarea)
-  min-height: 150px
+  height: 150px
+  textarea
+    resize: none
 
 .arg-warning-flex
   display: flex !important
   justify-content: center
-  align-items: center
-  flex-direction: column
   gap: 5px
+  padding: 15px 0
   span
+    max-width: 100%
+    padding-top: 4px
     text-align: center
 
 @media (min-width: 700px)

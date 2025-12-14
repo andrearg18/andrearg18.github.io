@@ -13,13 +13,13 @@ export class CoreComponent {
     private navigationService: NavigationService
   ) { }
 
-  // ngOnInit(): void {
-  //   this._validateCookies()
-  // }
-
   public goHome(): void {
     this.navigationService.goHome()
   }
+
+  // ngOnInit(): void {
+  //   this._validateCookies()
+  // }
 
   // public manageCookies(confirm: boolean): void {
   //   localStorage.setItem('confirmCookies', confirm ? 'true' : 'false')

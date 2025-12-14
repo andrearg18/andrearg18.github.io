@@ -1,6 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { EmailService } from '../../services/email.service';
+import { Title } from '@angular/platform-browser';
+import {
+  TITLE_HOME, FORM_SUCCESS_SUBMISSION,
+  FORM_INVALID_FORM_REQUIRED, FORM_INVALID_FORM_EMAIL,
+  FORM_FAILED_SUBMISSION, FORM_UNAVAILABLE_SERVICE
+} from '../../../shared/constants/base';
 
 @Component({
   selector: 'app-home',
@@ -17,7 +23,9 @@ export class HomeComponent implements OnInit {
 
   public isSuccessSubmission = false
 
-  public showInvalidFormError = false
+  public showInvalidRequiredError = false
+
+  public showInvalidEmailError = false
 
   public submissionError = ''
 
@@ -25,36 +33,33 @@ export class HomeComponent implements OnInit {
 
   public waitingResponse = false
 
-  private readonly _SUCCESS_SUBMISSION_MESSAGE = 'Sent successfully!\nThank you for sending us your demo. If we are interested, we will contact you :)'
-
-  private readonly _INVALID_FORM_MESSAGE = 'You must fill in all fields'
-
-  private readonly _FAILED_SUBMISSION_MESSAGE = 'Something has gone wrong. Please wait a few seconds and try again :('
-
-  private readonly _UNAVAILABLE_SERVICE_MESSAGE = 'Something has gone wrong. Please try again later :('
-
-  private readonly _EXPIRE_TIME = 600000
+  private readonly EXPIRE_TIME = 600000
 
   private fails = 0
 
   constructor(
+    private titleService: Title,
     private formBuilder: UntypedFormBuilder,
     private emailService: EmailService,
   ) { }
 
   ngOnInit(): void {
-    console.info('v1.19 Legal pages')
+    console.info('v1.19 Form fixes && Tab')
+    this.titleService.setTitle(TITLE_HOME)
     this._initForm()
     this._handleLocalStorage()
     this._setValueChanges()
   }
 
   public sendEmail(): void {
-    this.showInvalidFormError = false
-    if (this.emailForm.invalid) {
-      setTimeout(() => this.showInvalidFormError = true)
+    this.showInvalidRequiredError = false
+    this.showInvalidEmailError = false
+    if (this.emailForm.get('email')?.hasError('email')) {
+      setTimeout(() => this.showInvalidEmailError = true)
+    } else if (this.emailForm.invalid) {
+      setTimeout(() => this.showInvalidRequiredError = true)
     } else {
-      this.showInvalidFormError = false
+      this.showInvalidRequiredError = false
       this.waitingResponse = true
 
       this.emailService.sendEmail(this.emailForm.value)
@@ -65,13 +70,15 @@ export class HomeComponent implements OnInit {
 
   public getMessage(): string {
     if (this.isSuccessSubmission) {
-      return this._SUCCESS_SUBMISSION_MESSAGE
-    } else if (this.showInvalidFormError) {
-      return this._INVALID_FORM_MESSAGE
+      return FORM_SUCCESS_SUBMISSION
+    } else if (this.showInvalidRequiredError) {
+      return FORM_INVALID_FORM_REQUIRED
+    } else if (this.showInvalidEmailError) {
+      return FORM_INVALID_FORM_EMAIL
     } else if (this.isFailedSubmission) {
-      return this._FAILED_SUBMISSION_MESSAGE.replace(/([\p{L}\p{N}_]+)(\s*:\()/gu, `<span class="--arg-line--nobreak">$1 :(</span>`)
+      return FORM_FAILED_SUBMISSION.replace(/([\p{L}\p{N}_]+)(\s*:\()/gu, `<span class="--arg-line--nobreak">$1 :(</span>`)
     } else if (this.isUnavailableService) {
-      return this._UNAVAILABLE_SERVICE_MESSAGE.replace(/([\p{L}\p{N}_]+)(\s*:\()/gu, `<span class="--arg-line--nobreak">$1 :(</span>`)
+      return FORM_UNAVAILABLE_SERVICE.replace(/([\p{L}\p{N}_]+)(\s*:\()/gu, `<span class="--arg-line--nobreak">$1 :(</span>`)
     } else {
       return ''
     }
@@ -103,7 +110,7 @@ export class HomeComponent implements OnInit {
   private _initForm(): void {
     this.emailForm = this.formBuilder.group({
       genre: ['', Validators.required],
-      email: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
       link: ['', Validators.required],
       message: ['', Validators.required],
     })
@@ -135,7 +142,7 @@ export class HomeComponent implements OnInit {
     this.isFailedSubmission = false
     this.waitingResponse = false
     this.isUnavailableService = true
-    localStorage.setItem('unavailableTimeService', JSON.stringify(Date.now() + this._EXPIRE_TIME))
+    localStorage.setItem('unavailableTimeService', JSON.stringify(Date.now() + this.EXPIRE_TIME))
   }
 
 }

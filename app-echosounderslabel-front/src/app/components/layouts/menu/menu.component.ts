@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { URL_EMAIL, URL_INSTAGRAM, URL_SOUND_CLOUD } from '../../../../shared/constants/base';
 
 @Component({
   selector: 'app-menu',
@@ -11,15 +12,15 @@ export class MenuComponent {
   public menuOpen = false
 
   public goToContact(): void {
-    window.open('mailto:echosounderslabel@gmail.com', '_blank')
+    window.open(URL_EMAIL, '_blank')
   }
 
   public goToAboutUs(): void {
-    window.open('https://www.instagram.com/echosounders', '_blank')
+    window.open(URL_INSTAGRAM, '_blank')
   }
 
   public goToSoundCloud(): void {
-    window.open('https://on.soundcloud.com/VrWdUGyGyOTnKS5aUw', '_blank')
+    window.open(URL_SOUND_CLOUD, '_blank')
   }
 
   // public goToYoutube(): void {

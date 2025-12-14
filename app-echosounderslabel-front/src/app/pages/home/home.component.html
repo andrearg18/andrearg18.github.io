@@ -52,6 +52,7 @@
             <mat-label>Tell us something about you and your music</mat-label>
             <textarea
               formControlName="message"
+              rows="6"
               autocomplete="off"
               matInput
             ></textarea>
@@ -65,11 +66,19 @@
       class="cell --arg-text arg-warning-flex --arg-animation-thin"
       [ngClass]="{
         'is-hidden':
-          showInvalidFormError || isFailedSubmission || isUnavailableService,
+          showInvalidRequiredError ||
+          isFailedSubmission ||
+          isUnavailableService,
         '--arg-element-opened':
-          showInvalidFormError || isFailedSubmission || isUnavailableService,
+          showInvalidRequiredError ||
+          showInvalidEmailError ||
+          isFailedSubmission ||
+          isUnavailableService,
         '--arg-element-closed':
-          !showInvalidFormError || !isFailedSubmission || !isUnavailableService
+          !showInvalidRequiredError ||
+          !showInvalidEmailError ||
+          !isFailedSubmission ||
+          !isUnavailableService
       }"
     >
       <mat-icon>warning_amber</mat-icon>

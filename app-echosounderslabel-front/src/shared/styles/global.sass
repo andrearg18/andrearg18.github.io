@@ -27,6 +27,8 @@ mat-form-field
     mat-label, input, textarea, mat-select
       font-size: 17px !important
       color: #c6c6c6 !important
+    mat-label
+      white-space: pre-line
 
   .mdc-floating-label--float-above
     display: none !important
@@ -45,6 +47,10 @@ mat-form-field
   .mat-mdc-select-arrow svg
     fill: #c6c6c6
     padding-top: 15px
+  input, textarea
+    caret-color: #2d2d2d !important
+  ::selection
+    background: #2d2d2d
 
 mat-option span 
   font-family: 'Monument Extended' !important
