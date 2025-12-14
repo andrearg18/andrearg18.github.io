@@ -11,7 +11,7 @@ export class EmailService {
       'service_0o5t3sd',
       'template_9jue68m',
       {
-        genre: emailForm.genre,
+        subject: emailForm.genre,
         email: emailForm.email,
         link: emailForm.link,
         message: emailForm.message,
@@ -25,7 +25,7 @@ export class EmailService {
       'service_x',
       'template_x',
       {
-        genre: emailForm.genre,
+        subject: emailForm.genre,
         email: emailForm.email,
         link: emailForm.link,
         message: emailForm.message,

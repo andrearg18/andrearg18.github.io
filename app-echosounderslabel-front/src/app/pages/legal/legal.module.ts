@@ -4,6 +4,8 @@ import { TermsComponent } from './terms/terms.component';
 import { CookiesComponent } from './cookies/cookies.component';
 import { PrivacyComponent } from './privacy/privacy.component';
 import { SharedModule } from '../../../shared/shared.module';
+import { LegalRoutingModule } from './legal.routing';
+import { CoreModule } from "../../components/layouts/core/core.module";
 
 
 
@@ -22,6 +24,8 @@ import { SharedModule } from '../../../shared/shared.module';
   imports: [
     CommonModule,
     SharedModule,
+    LegalRoutingModule,
+    CoreModule
   ]
 })
 export class LegalModule { }

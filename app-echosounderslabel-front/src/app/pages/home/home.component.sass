@@ -7,7 +7,6 @@ form
     animation: elementActiveStrong 1s ease forwards
   button
     min-width: 150px
-    color: #979797
 
 mat-form-field:has(textarea)
   min-height: 150px
@@ -26,6 +25,7 @@ mat-form-field:has(textarea)
     opacity: 1
     transform: scale(.7) !important
     animation: elementActiveStrong 1s ease forwards !important
+    min-height: calc(100% + 100px)
 
 @media (min-width: 1100px)
   form

@@ -6,6 +6,10 @@ const routes: Routes = [
     loadChildren: () => import('./pages/home/home.module').then(m => m.HomeModule),
   },
   {
+    path: 'legal',
+    loadChildren: () => import('./pages/legal/legal.module').then(m => m.LegalModule),
+  },
+  {
     path: '**',
     redirectTo: '',
     pathMatch: 'full',

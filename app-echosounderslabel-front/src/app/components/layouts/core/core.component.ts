@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { NavigationService } from '../../../services/navigation.service';
 
 @Component({
   selector: 'app-core',
@@ -7,17 +8,18 @@ import { Component } from '@angular/core';
   styleUrl: './core.component.sass'
 })
 export class CoreComponent {
-  public showContent = true
 
-  public showTerms = false
-
-  public showPrivacy = false
-
-  public showCookies = false
+  constructor(
+    private navigationService: NavigationService
+  ) { }
 
   // ngOnInit(): void {
   //   this._validateCookies()
   // }
+
+  public goHome(): void {
+    this.navigationService.goHome()
+  }
 
   // public manageCookies(confirm: boolean): void {
   //   localStorage.setItem('confirmCookies', confirm ? 'true' : 'false')

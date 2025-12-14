@@ -1,0 +1,32 @@
+@use 'custom' as *
+
+.arg-legal-text, a
+  color: $arg-text-color
+
+.arg-legal-text
+  display: flex
+  flex-direction: column
+  background-color: #00000016 !important
+  max-height: 70vh
+  min-height: 100px
+  border-radius: 20px
+  padding: 20px
+  overflow-x: hidden
+  font-size: 15px
+  line-height: 1.5
+  font-style: italic
+  span
+    margin: 20px 0 15px 0
+    font-style: normal
+    font-weight: bold
+  span:has(mat-icon)
+    text-transform: uppercase
+    mat-icon
+      font-size: 15px
+      height: fit-content
+      width: fit-content
+  a
+    display: contents
+
+  @media (min-width: 1100px)
+    text-align: justify !important

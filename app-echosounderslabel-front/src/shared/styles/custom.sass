@@ -1,3 +1,4 @@
+$arg-text-color: #979797
 
 .--arg-text
   color: white !important
@@ -15,10 +16,12 @@
   border: none
   font-size: 20px
 
+.--arg-text-color, .--arg-button-primary
+  color: $arg-text-color
+
 .--arg-button-primary
   width: 100px
   background: black
-  color: white
   &:not(.disabled):hover
     background-color: #000000b6
     transform: scale(1.05)
@@ -40,6 +43,9 @@
 
 .--arg-line--nobreak
   white-space: nowrap
+
+.--arg-pointer
+  cursor: pointer
 
 .width100
   width: 100% !important

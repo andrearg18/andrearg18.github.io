@@ -43,7 +43,7 @@ export class HomeComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    console.info('v1.17 Form styles & Functional sending')
+    console.info('v1.18 Fixed success sending')
     this._initForm()
     this._handleLocalStorage()
     this._setValueChanges()
@@ -58,7 +58,7 @@ export class HomeComponent implements OnInit {
       this.waitingResponse = true
 
       this.emailService.sendEmail(this.emailForm.value)
-        .then(() => this._handleCompletedAction)
+        .then(() => this._handleCompletedAction())
         .catch(error => this._handleError(error))
     }
   }
@@ -126,6 +126,7 @@ export class HomeComponent implements OnInit {
     console.info(via2 ? '<Sending by secondary method>' : '<Sending>')
     this.waitingResponse = false
     this.isSuccessSubmission = true
+    localStorage.removeItem('form')
     localStorage.setItem('sentForm', 'true')
   }
 

@@ -7,40 +7,26 @@
     <div class="--arg-header">
       <!-- Logo -->
       <div class="--arg-title">
-        <img src="assets/favicon-page.svg" alt="Echo Sounders" />
+        <img
+          class="--arg-pointer"
+          src="assets/favicon-page.svg"
+          alt="Echo Sounders"
+          (click)="goHome()"
+        />
       </div>
 
       <!-- Menu -->
       <app-menu class="is-flex"></app-menu>
     </div>
 
+    <!-- Page content -->
     <div class="--arg-content">
-      <!-- Page content -->
-      @if(showContent) {
       <ng-content></ng-content>
-
-      <!-- Terms page-->
-      } @else if(showTerms) {
-      <app-terms></app-terms>
-
-      <!-- Policy page-->
-      } @else if(showPrivacy) {
-      <app-privacy></app-privacy>
-
-      <!-- Cookies page-->
-      } @else if(showCookies) {
-      <app-cookies></app-cookies>
-      }
     </div>
   </div>
 
   <!-- <Row Bottom> -->
   <div class="--arg-row-bottom --arg-flex-centered">
-    <app-footer
-      [(showContent)]="showContent"
-      [(showCookies)]="showCookies"
-      [(showTerms)]="showTerms"
-      [(showPrivacy)]="showPrivacy"
-    ></app-footer>
+    <app-footer></app-footer>
   </div>
 </div>
