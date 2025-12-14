@@ -43,7 +43,7 @@ export class HomeComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    console.info('v1.18 Fixed success sending')
+    console.info('v1.19 Legal pages')
     this._initForm()
     this._handleLocalStorage()
     this._setValueChanges()
