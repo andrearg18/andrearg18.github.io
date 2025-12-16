@@ -44,7 +44,7 @@ export class HomeComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    console.info('v1.22 Fixed service')
+    console.info('v1.23 Fixed Subject')
     this.titleService.setTitle(TITLE_HOME)
     this._initForm()
     this._handleLocalStorage()
