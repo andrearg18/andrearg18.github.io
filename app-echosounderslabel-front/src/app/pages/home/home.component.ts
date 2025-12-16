@@ -44,7 +44,7 @@ export class HomeComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    console.info('v1.21 Favicon')
+    console.info('v1.22 Fixed service')
     this.titleService.setTitle(TITLE_HOME)
     this._initForm()
     this._handleLocalStorage()
